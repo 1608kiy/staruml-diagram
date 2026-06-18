@@ -1,0 +1,118 @@
+{
+  "_type": "Project",
+  "_id": "PROJ+ERTemplate001",
+  "name": "ER图模板",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "MODEL+ER01",
+      "_parent": { "$ref": "PROJ+ERTemplate001" },
+      "name": "ERModel",
+      "ownedElements": [
+        {
+          "_type": "UMLClass",
+          "_id": "E+table_a",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "table_a",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+table_a+id",
+              "_parent": { "$ref": "E+table_a" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+table_a+name",
+              "_parent": { "$ref": "E+table_a" }, "name": "name", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+table_a+created_at",
+              "_parent": { "$ref": "E+table_a" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "E+table_b",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "table_b",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+table_b+id",
+              "_parent": { "$ref": "E+table_b" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+table_b+table_a_id",
+              "_parent": { "$ref": "E+table_b" }, "name": "table_a_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+table_b+value",
+              "_parent": { "$ref": "E+table_b" }, "name": "value", "type": "VARCHAR" }
+          ],
+          "operations": []
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "ASSOC+table_a+table_b",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+ab+1",
+            "_parent": { "$ref": "ASSOC+table_a+table_b" },
+            "reference": { "$ref": "E+table_a" },
+            "multiplicity": "1",
+            "aggregation": "none"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+ab+2",
+            "_parent": { "$ref": "ASSOC+table_a+table_b" },
+            "reference": { "$ref": "E+table_b" },
+            "multiplicity": "0..*",
+            "navigable": "navigable",
+            "aggregation": "none"
+          }
+        },
+        {
+          "_type": "UMLClassDiagram",
+          "_id": "DIAG+ER",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "E-R图",
+          "ownedViews": [
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+E+table_a",
+              "_parent": { "$ref": "DIAG+ER" },
+              "model": { "$ref": "E+table_a" },
+              "left": 40,
+              "top": 40,
+              "width": 200,
+              "height": 120,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+E+table_b",
+              "_parent": { "$ref": "DIAG+ER" },
+              "model": { "$ref": "E+table_b" },
+              "left": 320,
+              "top": 40,
+              "width": 200,
+              "height": 120,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "VIEW+ASSOC+table_a+table_b",
+              "_parent": { "$ref": "DIAG+ER" },
+              "model": { "$ref": "ASSOC+table_a+table_b" },
+              "head": { "$ref": "VIEW+E+table_b" },
+              "tail": { "$ref": "VIEW+E+table_a" },
+              "lineStyle": 1,
+              "points": "240:100;320:100",
+              "showVisibility": true,
+              "font": "Arial;12;0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "UMLProfile",
+      "_id": "AAAAAAG+erProf01",
+      "_parent": { "$ref": "PROJ+ERTemplate001" },
+      "name": "UMLStandardProfile",
+      "ownedElements": []
+    }
+  ]
+}

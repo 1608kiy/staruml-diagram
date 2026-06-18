@@ -1,0 +1,170 @@
+{
+  "_type": "Project",
+  "_id": "AAAAAAFF+ClassTemplate001",
+  "name": "领域类图模板",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "AAAAAAG+classModel01",
+      "_parent": { "$ref": "AAAAAAFF+ClassTemplate001" },
+      "name": "类图",
+      "ownedElements": [
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+ServiceA",
+          "_parent": { "$ref": "AAAAAAG+classModel01" },
+          "name": "ServiceA",
+          "attributes": [],
+          "operations": [
+            { "_type": "UMLOperation", "_id": "OP+SA+doSomething",
+              "_parent": { "$ref": "CLASS+ServiceA" },
+              "name": "doSomething", "visibility": "public", "returnType": "void" }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+RepositoryA",
+          "_parent": { "$ref": "AAAAAAG+classModel01" },
+          "name": "RepositoryA",
+          "attributes": [],
+          "operations": [
+            { "_type": "UMLOperation", "_id": "OP+RA+findById",
+              "_parent": { "$ref": "CLASS+RepositoryA" },
+              "name": "findById", "visibility": "public", "returnType": "EntityA" }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+EntityA",
+          "_parent": { "$ref": "AAAAAAG+classModel01" },
+          "name": "EntityA",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+EA+id",
+              "_parent": { "$ref": "CLASS+EntityA" },
+              "name": "id", "type": "Long", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+EA+name",
+              "_parent": { "$ref": "CLASS+EntityA" },
+              "name": "name", "type": "String", "visibility": "private" }
+          ],
+          "operations": []
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "ASSOC+SA+RA",
+          "_parent": { "$ref": "AAAAAAG+classModel01" },
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+SA+RA+1",
+            "_parent": { "$ref": "ASSOC+SA+RA" },
+            "reference": { "$ref": "CLASS+ServiceA" },
+            "multiplicity": "1",
+            "aggregation": "none"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+SA+RA+2",
+            "_parent": { "$ref": "ASSOC+SA+RA" },
+            "reference": { "$ref": "CLASS+RepositoryA" },
+            "multiplicity": "1",
+            "navigable": "navigable",
+            "aggregation": "none"
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "ASSOC+RA+EA",
+          "_parent": { "$ref": "AAAAAAG+classModel01" },
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+RA+EA+1",
+            "_parent": { "$ref": "ASSOC+RA+EA" },
+            "reference": { "$ref": "CLASS+RepositoryA" },
+            "multiplicity": "1",
+            "aggregation": "shared"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+RA+EA+2",
+            "_parent": { "$ref": "ASSOC+RA+EA" },
+            "reference": { "$ref": "CLASS+EntityA" },
+            "multiplicity": "0..*",
+            "navigable": "navigable",
+            "aggregation": "none"
+          }
+        },
+        {
+          "_type": "UMLClassDiagram",
+          "_id": "DIAG+Domain",
+          "_parent": { "$ref": "AAAAAAG+classModel01" },
+          "name": "领域类图",
+          "ownedViews": [
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+ServiceA",
+              "_parent": { "$ref": "DIAG+Domain" },
+              "model": { "$ref": "CLASS+ServiceA" },
+              "left": 40,
+              "top": 40,
+              "width": 200,
+              "height": 100,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+RepositoryA",
+              "_parent": { "$ref": "DIAG+Domain" },
+              "model": { "$ref": "CLASS+RepositoryA" },
+              "left": 320,
+              "top": 40,
+              "width": 200,
+              "height": 100,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+EntityA",
+              "_parent": { "$ref": "DIAG+Domain" },
+              "model": { "$ref": "CLASS+EntityA" },
+              "left": 320,
+              "top": 280,
+              "width": 200,
+              "height": 140,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "VIEW+ASSOC+SA+RA",
+              "_parent": { "$ref": "DIAG+Domain" },
+              "model": { "$ref": "ASSOC+SA+RA" },
+              "head": { "$ref": "VIEW+RepositoryA" },
+              "tail": { "$ref": "VIEW+ServiceA" },
+              "lineStyle": 1,
+              "points": "240:90;320:90",
+              "showVisibility": true,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "VIEW+ASSOC+RA+EA",
+              "_parent": { "$ref": "DIAG+Domain" },
+              "model": { "$ref": "ASSOC+RA+EA" },
+              "head": { "$ref": "VIEW+EntityA" },
+              "tail": { "$ref": "VIEW+RepositoryA" },
+              "lineStyle": 1,
+              "points": "420:140;420:280",
+              "showVisibility": true,
+              "font": "Arial;12;0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "UMLProfile",
+      "_id": "AAAAAAG+classProf01",
+      "_parent": { "$ref": "AAAAAAFF+ClassTemplate001" },
+      "name": "UMLStandardProfile",
+      "ownedElements": []
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "_type": "Project",
+  "_id": "AAAAAAFF+TiMoAuth001",
+  "name": "TiMo用户认证模块领域类图",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "AAAAAAG+authModel01",
+      "_parent": { "$ref": "AAAAAAFF+TiMoAuth001" },
+      "name": "类图",
+      "ownedElements": [
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+User",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "name": "User",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+User+id", "_parent": { "$ref": "CLASS+User" }, "name": "id", "type": "Long", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+User+email", "_parent": { "$ref": "CLASS+User" }, "name": "email", "type": "String", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+User+passwordHash", "_parent": { "$ref": "CLASS+User" }, "name": "passwordHash", "type": "String", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+User+nickname", "_parent": { "$ref": "CLASS+User" }, "name": "nickname", "type": "String", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+User+role", "_parent": { "$ref": "CLASS+User" }, "name": "role", "type": "String", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+User+status", "_parent": { "$ref": "CLASS+User" }, "name": "status", "type": "String", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+User+lastLoginAt", "_parent": { "$ref": "CLASS+User" }, "name": "lastLoginAt", "type": "LocalDateTime", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+User+createdAt", "_parent": { "$ref": "CLASS+User" }, "name": "createdAt", "type": "LocalDateTime", "visibility": "private" }
+          ],
+          "operations": []
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+AuthService",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "name": "AuthService",
+          "attributes": [],
+          "operations": [
+            { "_type": "UMLOperation", "_id": "OP+Auth+register", "_parent": { "$ref": "CLASS+AuthService" }, "name": "register", "visibility": "public", "returnType": "LoginResponse" },
+            { "_type": "UMLOperation", "_id": "OP+Auth+login", "_parent": { "$ref": "CLASS+AuthService" }, "name": "login", "visibility": "public", "returnType": "LoginResponse" },
+            { "_type": "UMLOperation", "_id": "OP+Auth+logout", "_parent": { "$ref": "CLASS+AuthService" }, "name": "logout", "visibility": "public", "returnType": "void" }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+UserRepository",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "name": "UserRepository",
+          "attributes": [],
+          "operations": [
+            { "_type": "UMLOperation", "_id": "OP+UR+findByEmail", "_parent": { "$ref": "CLASS+UserRepository" }, "name": "findByEmail", "visibility": "public", "returnType": "Optional<User>" },
+            { "_type": "UMLOperation", "_id": "OP+UR+existsByEmail", "_parent": { "$ref": "CLASS+UserRepository" }, "name": "existsByEmail", "visibility": "public", "returnType": "boolean" }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+JwtUtil",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "name": "JwtUtil",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+Jwt+key", "_parent": { "$ref": "CLASS+JwtUtil" }, "name": "key", "type": "SecretKey", "visibility": "private" },
+            { "_type": "UMLAttribute", "_id": "A+Jwt+expiration", "_parent": { "$ref": "CLASS+JwtUtil" }, "name": "expiration", "type": "long", "visibility": "private" }
+          ],
+          "operations": [
+            { "_type": "UMLOperation", "_id": "OP+Jwt+genToken", "_parent": { "$ref": "CLASS+JwtUtil" }, "name": "generateToken", "visibility": "public", "returnType": "String" },
+            { "_type": "UMLOperation", "_id": "OP+Jwt+parseToken", "_parent": { "$ref": "CLASS+JwtUtil" }, "name": "parseToken", "visibility": "public", "returnType": "Claims" },
+            { "_type": "UMLOperation", "_id": "OP+Jwt+isValid", "_parent": { "$ref": "CLASS+JwtUtil" }, "name": "isTokenValid", "visibility": "public", "returnType": "boolean" },
+            { "_type": "UMLOperation", "_id": "OP+Jwt+getUserId", "_parent": { "$ref": "CLASS+JwtUtil" }, "name": "getUserId", "visibility": "public", "returnType": "Long" },
+            { "_type": "UMLOperation", "_id": "OP+Jwt+getRole", "_parent": { "$ref": "CLASS+JwtUtil" }, "name": "getRole", "visibility": "public", "returnType": "String" }
+          ]
+        },
+        {
+          "_type": "UMLClass",
+          "_id": "CLASS+TokenBlacklistService",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "name": "TokenBlacklistService",
+          "attributes": [],
+          "operations": [
+            { "_type": "UMLOperation", "_id": "OP+BL+blacklist", "_parent": { "$ref": "CLASS+TokenBlacklistService" }, "name": "blacklist", "visibility": "public", "returnType": "void" },
+            { "_type": "UMLOperation", "_id": "OP+BL+isBlacklisted", "_parent": { "$ref": "CLASS+TokenBlacklistService" }, "name": "isBlacklisted", "visibility": "public", "returnType": "boolean" }
+          ]
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "ASSOC+Auth+UserRepo",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+Auth+UR+1",
+            "_parent": { "$ref": "ASSOC+Auth+UserRepo" },
+            "reference": { "$ref": "CLASS+AuthService" },
+            "multiplicity": "1",
+            "aggregation": "none"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+Auth+UR+2",
+            "_parent": { "$ref": "ASSOC+Auth+UserRepo" },
+            "reference": { "$ref": "CLASS+UserRepository" },
+            "multiplicity": "1",
+            "navigable": "navigable",
+            "aggregation": "none"
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "ASSOC+Auth+Jwt",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+Auth+Jwt+1",
+            "_parent": { "$ref": "ASSOC+Auth+Jwt" },
+            "reference": { "$ref": "CLASS+AuthService" },
+            "multiplicity": "1",
+            "aggregation": "none"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+Auth+Jwt+2",
+            "_parent": { "$ref": "ASSOC+Auth+Jwt" },
+            "reference": { "$ref": "CLASS+JwtUtil" },
+            "multiplicity": "1",
+            "navigable": "navigable",
+            "aggregation": "none"
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "ASSOC+Auth+BL",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+Auth+BL+1",
+            "_parent": { "$ref": "ASSOC+Auth+BL" },
+            "reference": { "$ref": "CLASS+AuthService" },
+            "multiplicity": "1",
+            "aggregation": "none"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+Auth+BL+2",
+            "_parent": { "$ref": "ASSOC+Auth+BL" },
+            "reference": { "$ref": "CLASS+TokenBlacklistService" },
+            "multiplicity": "1",
+            "navigable": "navigable",
+            "aggregation": "none"
+          }
+        },
+        {
+          "_type": "UMLAssociation",
+          "_id": "ASSOC+UR+User",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "end1": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+UR+User+1",
+            "_parent": { "$ref": "ASSOC+UR+User" },
+            "reference": { "$ref": "CLASS+UserRepository" },
+            "multiplicity": "1",
+            "aggregation": "shared"
+          },
+          "end2": {
+            "_type": "UMLAssociationEnd",
+            "_id": "E+UR+User+2",
+            "_parent": { "$ref": "ASSOC+UR+User" },
+            "reference": { "$ref": "CLASS+User" },
+            "multiplicity": "0..*",
+            "navigable": "navigable",
+            "aggregation": "none"
+          }
+        },
+        {
+          "_type": "UMLClassDiagram",
+          "_id": "DIAG+AuthDomain",
+          "_parent": { "$ref": "AAAAAAG+authModel01" },
+          "name": "用户认证模块领域类图",
+          "ownedViews": [
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+User",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "CLASS+User" },
+              "left": 100,
+              "top": 60,
+              "width": 200,
+              "height": 220,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+AuthService",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "CLASS+AuthService" },
+              "left": 400,
+              "top": 60,
+              "width": 200,
+              "height": 120,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+UserRepository",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "CLASS+UserRepository" },
+              "left": 400,
+              "top": 280,
+              "width": 200,
+              "height": 100,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+JwtUtil",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "CLASS+JwtUtil" },
+              "left": 700,
+              "top": 60,
+              "width": 200,
+              "height": 180,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "VIEW+TokenBlacklistService",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "CLASS+TokenBlacklistService" },
+              "left": 700,
+              "top": 300,
+              "width": 200,
+              "height": 100,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "VIEW+ASSOC+Auth+UR",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "ASSOC+Auth+UserRepo" },
+              "head": { "$ref": "VIEW+UserRepository" },
+              "tail": { "$ref": "VIEW+AuthService" },
+              "lineStyle": 1,
+              "points": "500:180;500:280",
+              "showVisibility": true,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "VIEW+ASSOC+Auth+Jwt",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "ASSOC+Auth+Jwt" },
+              "head": { "$ref": "VIEW+JwtUtil" },
+              "tail": { "$ref": "VIEW+AuthService" },
+              "lineStyle": 1,
+              "points": "600:120;700:150",
+              "showVisibility": true,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "VIEW+ASSOC+Auth+BL",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "ASSOC+Auth+BL" },
+              "head": { "$ref": "VIEW+TokenBlacklistService" },
+              "tail": { "$ref": "VIEW+AuthService" },
+              "lineStyle": 1,
+              "points": "600:120;700:350",
+              "showVisibility": true,
+              "font": "Arial;12;0"
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "VIEW+ASSOC+UR+User",
+              "_parent": { "$ref": "DIAG+AuthDomain" },
+              "model": { "$ref": "ASSOC+UR+User" },
+              "head": { "$ref": "VIEW+User" },
+              "tail": { "$ref": "VIEW+UserRepository" },
+              "lineStyle": 1,
+              "points": "400:330;300:280",
+              "showVisibility": true,
+              "font": "Arial;12;0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "UMLProfile",
+      "_id": "AAAAAAG+authProf01",
+      "_parent": { "$ref": "AAAAAAFF+TiMoAuth001" },
+      "name": "UMLStandardProfile",
+      "ownedElements": []
+    }
+  ]
+}

@@ -1,0 +1,412 @@
+{
+  "_type": "Project",
+  "_id": "PROJ+TiMoER001",
+  "name": "TiMo系统E-R图",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "MODEL+ER01",
+      "_parent": { "$ref": "PROJ+TiMoER001" },
+      "name": "ERModel",
+      "ownedElements": [
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+users",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "users",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+users+id", "_parent": { "$ref": "E+users" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+users+email", "_parent": { "$ref": "E+users" }, "name": "email «UQ»", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+users+pwd", "_parent": { "$ref": "E+users" }, "name": "password_hash", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+users+nick", "_parent": { "$ref": "E+users" }, "name": "nickname", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+users+role", "_parent": { "$ref": "E+users" }, "name": "role", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+users+stat", "_parent": { "$ref": "E+users" }, "name": "status", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+users+exam", "_parent": { "$ref": "E+users" }, "name": "exam_type", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+users+tv", "_parent": { "$ref": "E+users" }, "name": "target_vocab", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+users+dnl", "_parent": { "$ref": "E+users" }, "name": "daily_new_limit", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+users+mu", "_parent": { "$ref": "E+users" }, "name": "mu_init", "type": "DOUBLE" },
+            { "_type": "UMLAttribute", "_id": "A+users+sig", "_parent": { "$ref": "E+users" }, "name": "sigma_init", "type": "DOUBLE" },
+            { "_type": "UMLAttribute", "_id": "A+users+ll", "_parent": { "$ref": "E+users" }, "name": "last_login_at", "type": "DATETIME" },
+            { "_type": "UMLAttribute", "_id": "A+users+ca", "_parent": { "$ref": "E+users" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+words",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "words",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+w+id", "_parent": { "$ref": "E+words" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+w+word", "_parent": { "$ref": "E+words" }, "name": "word", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+w+ph", "_parent": { "$ref": "E+words" }, "name": "phonetic", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+w+pos", "_parent": { "$ref": "E+words" }, "name": "pos", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+w+et", "_parent": { "$ref": "E+words" }, "name": "exam_type", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+w+col", "_parent": { "$ref": "E+words" }, "name": "collins", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+w+bnc", "_parent": { "$ref": "E+words" }, "name": "bnc_freq", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+w+frq", "_parent": { "$ref": "E+words" }, "name": "frq_freq", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+w+ca", "_parent": { "$ref": "E+words" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+meanings",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "meanings",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+m+id", "_parent": { "$ref": "E+meanings" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+m+wid", "_parent": { "$ref": "E+meanings" }, "name": "word_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+m+mean", "_parent": { "$ref": "E+meanings" }, "name": "meaning", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+m+wt", "_parent": { "$ref": "E+meanings" }, "name": "weight", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+m+so", "_parent": { "$ref": "E+meanings" }, "name": "sort_order", "type": "INT" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+examples",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "examples",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+ex+id", "_parent": { "$ref": "E+examples" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+ex+wid", "_parent": { "$ref": "E+examples" }, "name": "word_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+ex+en", "_parent": { "$ref": "E+examples" }, "name": "sentence_en", "type": "TEXT" },
+            { "_type": "UMLAttribute", "_id": "A+ex+zh", "_parent": { "$ref": "E+examples" }, "name": "sentence_zh", "type": "TEXT" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+uwb",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "user_word_bind",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+uwb+id", "_parent": { "$ref": "E+uwb" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+uid", "_parent": { "$ref": "E+uwb" }, "name": "user_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+wid", "_parent": { "$ref": "E+uwb" }, "name": "word_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+d", "_parent": { "$ref": "E+uwb" }, "name": "difficulty", "type": "DOUBLE" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+s", "_parent": { "$ref": "E+uwb" }, "name": "stability", "type": "DOUBLE" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+r", "_parent": { "$ref": "E+uwb" }, "name": "retrievability", "type": "DOUBLE" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+nrt", "_parent": { "$ref": "E+uwb" }, "name": "next_review_time", "type": "DATETIME" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+rc", "_parent": { "$ref": "E+uwb" }, "name": "review_count", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+is", "_parent": { "$ref": "E+uwb" }, "name": "is_stubborn", "type": "BOOLEAN" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+ss", "_parent": { "$ref": "E+uwb" }, "name": "stubborn_since", "type": "DATETIME" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+ce", "_parent": { "$ref": "E+uwb" }, "name": "consecutive_errors", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+ma", "_parent": { "$ref": "E+uwb" }, "name": "mastered_at", "type": "DATETIME" },
+            { "_type": "UMLAttribute", "_id": "A+uwb+mmm", "_parent": { "$ref": "E+uwb" }, "name": "meaning_mastered_mask", "type": "INT" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+qr",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "quiz_records",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+qr+id", "_parent": { "$ref": "E+qr" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+qr+uid", "_parent": { "$ref": "E+qr" }, "name": "user_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+qr+wid", "_parent": { "$ref": "E+qr" }, "name": "word_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+qr+sm", "_parent": { "$ref": "E+qr" }, "name": "study_mode", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+qr+g", "_parent": { "$ref": "E+qr" }, "name": "grade", "type": "DOUBLE" },
+            { "_type": "UMLAttribute", "_id": "A+qr+cg", "_parent": { "$ref": "E+qr" }, "name": "composite_grade", "type": "DOUBLE" },
+            { "_type": "UMLAttribute", "_id": "A+qr+sr", "_parent": { "$ref": "E+qr" }, "name": "step_results", "type": "JSON" },
+            { "_type": "UMLAttribute", "_id": "A+qr+ht", "_parent": { "$ref": "E+qr" }, "name": "hint_total", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+qr+rt", "_parent": { "$ref": "E+qr" }, "name": "reaction_time_ms", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+qr+ca", "_parent": { "$ref": "E+qr" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+cql",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "conversation_quiz_log",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+cql+id", "_parent": { "$ref": "E+cql" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cql+uid", "_parent": { "$ref": "E+cql" }, "name": "user_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cql+wid", "_parent": { "$ref": "E+cql" }, "name": "word_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cql+sid", "_parent": { "$ref": "E+cql" }, "name": "session_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cql+uc", "_parent": { "$ref": "E+cql" }, "name": "used_correctly", "type": "BOOLEAN" },
+            { "_type": "UMLAttribute", "_id": "A+cql+ca", "_parent": { "$ref": "E+cql" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+cs",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "chat_sessions",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+cs+id", "_parent": { "$ref": "E+cs" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cs+uid", "_parent": { "$ref": "E+cs" }, "name": "user_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cs+ct", "_parent": { "$ref": "E+cs" }, "name": "conversation_type", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+cs+tt", "_parent": { "$ref": "E+cs" }, "name": "title", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+cs+ca", "_parent": { "$ref": "E+cs" }, "name": "created_at", "type": "DATETIME" },
+            { "_type": "UMLAttribute", "_id": "A+cs+ua", "_parent": { "$ref": "E+cs" }, "name": "updated_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+cm",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "chat_messages",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+cm+id", "_parent": { "$ref": "E+cm" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cm+sid", "_parent": { "$ref": "E+cm" }, "name": "session_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+cm+rl", "_parent": { "$ref": "E+cm" }, "name": "role", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+cm+ct", "_parent": { "$ref": "E+cm" }, "name": "content", "type": "TEXT" },
+            { "_type": "UMLAttribute", "_id": "A+cm+cd", "_parent": { "$ref": "E+cm" }, "name": "card_data", "type": "JSON" },
+            { "_type": "UMLAttribute", "_id": "A+cm+sa", "_parent": { "$ref": "E+cm" }, "name": "suggested_actions", "type": "JSON" },
+            { "_type": "UMLAttribute", "_id": "A+cm+ca", "_parent": { "$ref": "E+cm" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+ep",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "exam_plans",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+ep+id", "_parent": { "$ref": "E+ep" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+ep+uid", "_parent": { "$ref": "E+ep" }, "name": "user_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+ep+et", "_parent": { "$ref": "E+ep" }, "name": "exam_type", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+ep+ed", "_parent": { "$ref": "E+ep" }, "name": "exam_date", "type": "DATE" },
+            { "_type": "UMLAttribute", "_id": "A+ep+dq", "_parent": { "$ref": "E+ep" }, "name": "daily_quota", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+ep+st", "_parent": { "$ref": "E+ep" }, "name": "status", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+ep+ca", "_parent": { "$ref": "E+ep" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+sl",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "stubborn_log",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+sl+id", "_parent": { "$ref": "E+sl" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+sl+uid", "_parent": { "$ref": "E+sl" }, "name": "user_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+sl+wid", "_parent": { "$ref": "E+sl" }, "name": "word_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+sl+ac", "_parent": { "$ref": "E+sl" }, "name": "action", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+sl+md", "_parent": { "$ref": "E+sl" }, "name": "mode", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+sl+ca", "_parent": { "$ref": "E+sl" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+sc",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "system_config",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+sc+ck", "_parent": { "$ref": "E+sc" }, "name": "config_key «PK»", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+sc+cv", "_parent": { "$ref": "E+sc" }, "name": "config_value", "type": "TEXT" },
+            { "_type": "UMLAttribute", "_id": "A+sc+ds", "_parent": { "$ref": "E+sc" }, "name": "description", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+sc+ua", "_parent": { "$ref": "E+sc" }, "name": "updated_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+apc",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "ai_provider_config",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+apc+id", "_parent": { "$ref": "E+apc" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+apc+pv", "_parent": { "$ref": "E+apc" }, "name": "provider", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+apc+md", "_parent": { "$ref": "E+apc" }, "name": "model", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+apc+ak", "_parent": { "$ref": "E+apc" }, "name": "api_key", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+apc+bu", "_parent": { "$ref": "E+apc" }, "name": "base_url", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+apc+ia", "_parent": { "$ref": "E+apc" }, "name": "is_active", "type": "BOOLEAN" },
+            { "_type": "UMLAttribute", "_id": "A+apc+ca", "_parent": { "$ref": "E+apc" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+acl",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "ai_call_log",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+acl+id", "_parent": { "$ref": "E+acl" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+acl+pv", "_parent": { "$ref": "E+acl" }, "name": "provider", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+acl+md", "_parent": { "$ref": "E+acl" }, "name": "model", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+acl+tk", "_parent": { "$ref": "E+acl" }, "name": "tokens", "type": "INT" },
+            { "_type": "UMLAttribute", "_id": "A+acl+lt", "_parent": { "$ref": "E+acl" }, "name": "latency_ms", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+acl+st", "_parent": { "$ref": "E+acl" }, "name": "status", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+acl+ca", "_parent": { "$ref": "E+acl" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        {
+          "_type": "UMLClass",
+          "_id": "E+aol",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "admin_operation_log",
+          "stereotype": "Entity",
+          "attributes": [
+            { "_type": "UMLAttribute", "_id": "A+aol+id", "_parent": { "$ref": "E+aol" }, "name": "id «PK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+aol+aid", "_parent": { "$ref": "E+aol" }, "name": "admin_id «FK»", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+aol+op", "_parent": { "$ref": "E+aol" }, "name": "operation", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+aol+tt", "_parent": { "$ref": "E+aol" }, "name": "target_type", "type": "VARCHAR" },
+            { "_type": "UMLAttribute", "_id": "A+aol+tid", "_parent": { "$ref": "E+aol" }, "name": "target_id", "type": "BIGINT" },
+            { "_type": "UMLAttribute", "_id": "A+aol+dt", "_parent": { "$ref": "E+aol" }, "name": "detail", "type": "TEXT" },
+            { "_type": "UMLAttribute", "_id": "A+aol+ca", "_parent": { "$ref": "E+aol" }, "name": "created_at", "type": "DATETIME" }
+          ],
+          "operations": []
+        },
+
+        { "_type": "UMLAssociation", "_id": "R+users+uwb", "_parent": { "$ref": "MODEL+ER01" }, "name": "拥有",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+users+uwb+1", "_parent": { "$ref": "R+users+uwb" }, "reference": { "$ref": "E+users" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+users+uwb+2", "_parent": { "$ref": "R+users+uwb" }, "reference": { "$ref": "E+uwb" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+words+uwb", "_parent": { "$ref": "MODEL+ER01" }, "name": "被绑定",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+words+uwb+1", "_parent": { "$ref": "R+words+uwb" }, "reference": { "$ref": "E+words" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+words+uwb+2", "_parent": { "$ref": "R+words+uwb" }, "reference": { "$ref": "E+uwb" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+words+meanings", "_parent": { "$ref": "MODEL+ER01" }, "name": "含释义",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+wm+1", "_parent": { "$ref": "R+words+meanings" }, "reference": { "$ref": "E+words" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+wm+2", "_parent": { "$ref": "R+words+meanings" }, "reference": { "$ref": "E+meanings" }, "multiplicity": "1..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+words+examples", "_parent": { "$ref": "MODEL+ER01" }, "name": "含例句",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+we+1", "_parent": { "$ref": "R+words+examples" }, "reference": { "$ref": "E+words" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+we+2", "_parent": { "$ref": "R+words+examples" }, "reference": { "$ref": "E+examples" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+users+qr", "_parent": { "$ref": "MODEL+ER01" }, "name": "产生",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+uqr+1", "_parent": { "$ref": "R+users+qr" }, "reference": { "$ref": "E+users" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+uqr+2", "_parent": { "$ref": "R+users+qr" }, "reference": { "$ref": "E+qr" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+words+qr", "_parent": { "$ref": "MODEL+ER01" }, "name": "被练习",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+wqr+1", "_parent": { "$ref": "R+words+qr" }, "reference": { "$ref": "E+words" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+wqr+2", "_parent": { "$ref": "R+words+qr" }, "reference": { "$ref": "E+qr" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+users+cs", "_parent": { "$ref": "MODEL+ER01" }, "name": "发起对话",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+ucs+1", "_parent": { "$ref": "R+users+cs" }, "reference": { "$ref": "E+users" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+ucs+2", "_parent": { "$ref": "R+users+cs" }, "reference": { "$ref": "E+cs" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+cs+cm", "_parent": { "$ref": "MODEL+ER01" }, "name": "含消息",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+cscm+1", "_parent": { "$ref": "R+cs+cm" }, "reference": { "$ref": "E+cs" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+cscm+2", "_parent": { "$ref": "R+cs+cm" }, "reference": { "$ref": "E+cm" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+users+ep", "_parent": { "$ref": "MODEL+ER01" }, "name": "制定",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+uep+1", "_parent": { "$ref": "R+users+ep" }, "reference": { "$ref": "E+users" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+uep+2", "_parent": { "$ref": "R+users+ep" }, "reference": { "$ref": "E+ep" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+users+cql", "_parent": { "$ref": "MODEL+ER01" }, "name": "对话练习",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+ucql+1", "_parent": { "$ref": "R+users+cql" }, "reference": { "$ref": "E+users" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+ucql+2", "_parent": { "$ref": "R+users+cql" }, "reference": { "$ref": "E+cql" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+words+cql", "_parent": { "$ref": "MODEL+ER01" }, "name": "对话使用",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+wcql+1", "_parent": { "$ref": "R+words+cql" }, "reference": { "$ref": "E+words" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+wcql+2", "_parent": { "$ref": "R+words+cql" }, "reference": { "$ref": "E+cql" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+users+sl", "_parent": { "$ref": "MODEL+ER01" }, "name": "顽固标记",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+usl+1", "_parent": { "$ref": "R+users+sl" }, "reference": { "$ref": "E+users" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+usl+2", "_parent": { "$ref": "R+users+sl" }, "reference": { "$ref": "E+sl" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+words+sl", "_parent": { "$ref": "MODEL+ER01" }, "name": "顽固词",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+wsl+1", "_parent": { "$ref": "R+words+sl" }, "reference": { "$ref": "E+words" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+wsl+2", "_parent": { "$ref": "R+words+sl" }, "reference": { "$ref": "E+sl" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        { "_type": "UMLAssociation", "_id": "R+users+aol", "_parent": { "$ref": "MODEL+ER01" }, "name": "管理操作",
+          "end1": { "_type": "UMLAssociationEnd", "_id": "R+uaol+1", "_parent": { "$ref": "R+users+aol" }, "reference": { "$ref": "E+users" }, "multiplicity": "1" },
+          "end2": { "_type": "UMLAssociationEnd", "_id": "R+uaol+2", "_parent": { "$ref": "R+users+aol" }, "reference": { "$ref": "E+aol" }, "multiplicity": "0..*", "navigable": "navigable" } },
+
+        {
+          "_type": "UMLClassDiagram",
+          "_id": "DIAG+ER",
+          "_parent": { "$ref": "MODEL+ER01" },
+          "name": "系统E-R图",
+          "defaultDiagram": true,
+          "ownedViews": [
+
+            { "_type": "UMLClassView", "_id": "V+users", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+users" }, "left": 640, "top": 40, "width": 260, "height": 290, "font": "Arial;12;0", "suppressOperations": true, "showOperationSignature": false },
+            { "_type": "UMLClassView", "_id": "V+uwb", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+uwb" }, "left": 640, "top": 410, "width": 280, "height": 290, "font": "Arial;12;0;;;;;;;;1", "suppressOperations": true, "showOperationSignature": false },
+            { "_type": "UMLClassView", "_id": "V+words", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+words" }, "left": 640, "top": 780, "width": 260, "height": 220, "font": "Arial;12;0", "suppressOperations": true, "showOperationSignature": false },
+
+            { "_type": "UMLClassView", "_id": "V+cs", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+cs" }, "left": 320, "top": 40, "width": 240, "height": 170, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+cm", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+cm" }, "left": 40, "top": 40, "width": 240, "height": 190, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+ep", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+ep" }, "left": 320, "top": 260, "width": 240, "height": 190, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+qr", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+qr" }, "left": 320, "top": 500, "width": 240, "height": 240, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+cql", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+cql" }, "left": 40, "top": 280, "width": 240, "height": 170, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+sl", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+sl" }, "left": 40, "top": 500, "width": 240, "height": 170, "font": "Arial;12;0", "suppressOperations": true },
+
+            { "_type": "UMLClassView", "_id": "V+meanings", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+meanings" }, "left": 970, "top": 780, "width": 240, "height": 160, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+examples", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+examples" }, "left": 970, "top": 970, "width": 240, "height": 140, "font": "Arial;12;0", "suppressOperations": true },
+
+            { "_type": "UMLClassView", "_id": "V+sc", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+sc" }, "left": 40, "top": 880, "width": 240, "height": 150, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+apc", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+apc" }, "left": 320, "top": 880, "width": 240, "height": 200, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+acl", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+acl" }, "left": 970, "top": 40, "width": 240, "height": 200, "font": "Arial;12;0", "suppressOperations": true },
+            { "_type": "UMLClassView", "_id": "V+aol", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "E+aol" }, "left": 970, "top": 270, "width": 240, "height": 210, "font": "Arial;12;0", "suppressOperations": true },
+
+            { "_type": "UMLAssociationView", "_id": "AV+users+uwb", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+users+uwb" }, "head": { "$ref": "V+uwb" }, "tail": { "$ref": "V+users" }, "lineStyle": 1, "points": "770:330;780:410", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+words+uwb", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+words+uwb" }, "head": { "$ref": "V+uwb" }, "tail": { "$ref": "V+words" }, "lineStyle": 1, "points": "770:780;780:700", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+wm", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+words+meanings" }, "head": { "$ref": "V+meanings" }, "tail": { "$ref": "V+words" }, "lineStyle": 1, "points": "900:880;970:860", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+we", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+words+examples" }, "head": { "$ref": "V+examples" }, "tail": { "$ref": "V+words" }, "lineStyle": 1, "points": "900:960;970:1040", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+uqr", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+users+qr" }, "head": { "$ref": "V+qr" }, "tail": { "$ref": "V+users" }, "lineStyle": 1, "points": "640:185;560:620", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+wqr", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+words+qr" }, "head": { "$ref": "V+qr" }, "tail": { "$ref": "V+words" }, "lineStyle": 1, "points": "640:890;560:620", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+ucs", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+users+cs" }, "head": { "$ref": "V+cs" }, "tail": { "$ref": "V+users" }, "lineStyle": 1, "points": "640:120;560:120", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+cscm", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+cs+cm" }, "head": { "$ref": "V+cm" }, "tail": { "$ref": "V+cs" }, "lineStyle": 1, "points": "320:130;280:130", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+uep", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+users+ep" }, "head": { "$ref": "V+ep" }, "tail": { "$ref": "V+users" }, "lineStyle": 1, "points": "640:220;560:350", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+ucql", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+users+cql" }, "head": { "$ref": "V+cql" }, "tail": { "$ref": "V+users" }, "lineStyle": 1, "points": "640:250;280:360", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+wcql", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+words+cql" }, "head": { "$ref": "V+cql" }, "tail": { "$ref": "V+words" }, "lineStyle": 1, "points": "640:860;280:380", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+usl", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+users+sl" }, "head": { "$ref": "V+sl" }, "tail": { "$ref": "V+users" }, "lineStyle": 1, "points": "640:300;280:560", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+wsl", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+words+sl" }, "head": { "$ref": "V+sl" }, "tail": { "$ref": "V+words" }, "lineStyle": 1, "points": "640:830;280:600", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" },
+
+            { "_type": "UMLAssociationView", "_id": "AV+uaol", "_parent": { "$ref": "DIAG+ER" }, "model": { "$ref": "R+users+aol" }, "head": { "$ref": "V+aol" }, "tail": { "$ref": "V+users" }, "lineStyle": 1, "points": "900:180;970:330", "showVisibility": true, "showMultiplicity": true, "font": "Arial;11;0" }
+
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "UMLProfile",
+      "_id": "PROF+std",
+      "_parent": { "$ref": "PROJ+TiMoER001" },
+      "name": "UMLStandardProfile",
+      "ownedElements": []
+    }
+  ]
+}
